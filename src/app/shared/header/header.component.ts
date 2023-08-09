@@ -18,19 +18,21 @@ export class HeaderComponent {
     if (dialog === 'login') {
       this.dialog.open(LoginModalComponent, {
         width: 'fit-content',
-        minWidth: '350px',
+        maxWidth: '500px',
         enterAnimationDuration,
         exitAnimationDuration,
+        backdropClass: 'dialog-backdrop',
+        panelClass: 'dialog'
       });  
     } else if (dialog === 'register') {
       this.dialog.open(RegisterModalComponent, {
         width: 'fit-content',
-        minWidth: '350px',
+        maxWidth: '500px',
         enterAnimationDuration,
         exitAnimationDuration,
+        backdropClass: 'dialog-backdrop',
+        panelClass: 'dialog'
       });
     }
-
-
   }
 }
