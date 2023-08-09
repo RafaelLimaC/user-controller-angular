@@ -17,8 +17,6 @@ export class HeaderComponent {
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string, dialog: string): void {
     if (dialog === 'login') {
       this.dialog.open(LoginModalComponent, {
-        width: 'fit-content',
-        maxWidth: '500px',
         enterAnimationDuration,
         exitAnimationDuration,
         backdropClass: 'dialog-backdrop',
@@ -26,8 +24,6 @@ export class HeaderComponent {
       });  
     } else if (dialog === 'register') {
       this.dialog.open(RegisterModalComponent, {
-        width: 'fit-content',
-        maxWidth: '500px',
         enterAnimationDuration,
         exitAnimationDuration,
         backdropClass: 'dialog-backdrop',
