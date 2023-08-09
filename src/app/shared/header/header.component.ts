@@ -24,7 +24,7 @@ export class HeaderComponent {
       });  
     } else if (dialog === 'register') {
       this.dialog.open(RegisterModalComponent, {
-        width: '30%',
+        width: 'fit-content',
         minWidth: '350px',
         enterAnimationDuration,
         exitAnimationDuration,

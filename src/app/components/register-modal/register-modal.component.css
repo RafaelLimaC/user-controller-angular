@@ -1,0 +1,21 @@
+.title {
+    font-size: 2rem;
+    padding-top: 1rem;
+}
+
+.field-email, .field-password {
+    width: 80%;
+    margin-bottom: 1rem;
+}
+
+.mat-typography, h2 {
+    text-align: center;
+}
+
+.mat-typography {
+    padding-bottom: 0;
+}
+
+.dialog-actions {
+    padding: 0 0 2rem;
+}

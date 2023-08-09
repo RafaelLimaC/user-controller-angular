@@ -2,7 +2,6 @@
     flex: 1 1 auto;
 }
 
-
 .mat-toolbar {
     display: flex;
     justify-content: center;
@@ -15,7 +14,7 @@
     width: 80%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 599px) {
     .header-wrapper {
         width: 100%;
     }

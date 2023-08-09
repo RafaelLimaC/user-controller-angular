@@ -1,0 +1,28 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: center;
+
+    max-width: 1024px;
+    width: 80%;
+    height: 100%;
+
+    font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+    .footer-wrapper {
+        width: 100%;
+    }
+}
+
+.footer-wrapper a {
+    text-decoration: none;
+}
