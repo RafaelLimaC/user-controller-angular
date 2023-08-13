@@ -19,6 +19,8 @@ export class HeaderComponent {
       this.dialog.open(LoginModalComponent, {
         enterAnimationDuration,
         exitAnimationDuration,
+        maxWidth: '500px',
+        width: 'fit-content',
         backdropClass: 'dialog-backdrop',
         panelClass: 'dialog'
       });  
@@ -26,6 +28,8 @@ export class HeaderComponent {
       this.dialog.open(RegisterModalComponent, {
         enterAnimationDuration,
         exitAnimationDuration,
+        maxWidth: '500px',
+        width: 'fit-content',
         backdropClass: 'dialog-backdrop',
         panelClass: 'dialog'
       });
