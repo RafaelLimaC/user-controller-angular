@@ -14,6 +14,7 @@ export class RegisterModalComponent {
 
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
+  confirmPassword = new FormControl('', [Validators.required]);
   hide = true;
 
   getErrorMessage(field: FormControl) {
