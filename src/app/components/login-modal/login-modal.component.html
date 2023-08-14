@@ -5,7 +5,7 @@
     <mat-form-field class="field-email">
       <mat-label>Digite seu email</mat-label>
       <input matInput placeholder="email@exemplo.com" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>
     </mat-form-field>
     <mat-form-field class="field-password">
       <mat-label>Digite sua senha</mat-label>
@@ -13,7 +13,7 @@
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+      <mat-error *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
     </mat-form-field>
     <div class="esqueceu-senha">Esqueceu sua senha?</div>
   </mat-dialog-content>

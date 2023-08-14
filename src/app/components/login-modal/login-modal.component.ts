@@ -9,20 +9,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-modal.component.css'],
 })
 export class LoginModalComponent {
-  constructor(public dialogRef: MatDialogRef<LoginModalComponent>,
-    private router: Router) {}
-
+  
+  constructor(public dialogRef: MatDialogRef<LoginModalComponent>, private router: Router) {}
+  
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
   hide = true;
 
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Esse campo é obrigatório';
+  getErrorMessage(field: FormControl) {
+    if (field === this.email) {
+      if (field.hasError('required')) {
+        return 'Esse campo é obrigatório';
+      } else if (field.hasError('email')) {
+        return 'Email inválido';
+      }
+      
+    } else if (field === this.password) {
+      if (field.hasError('required')) {
+        return 'Esse campo é obrigatório';
+      }
     }
 
-    return this.email.hasError('email') ? 'Email inválido' : '';
+    return '';
   }
 
   login(form: NgForm) {
