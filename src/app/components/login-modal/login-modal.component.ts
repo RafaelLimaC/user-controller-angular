@@ -16,22 +16,16 @@ export class LoginModalComponent {
   password = new FormControl('', [Validators.required]);
   hide = true;
 
-
   getErrorMessage(field: FormControl) {
-    if (field === this.email) {
-      if (field.hasError('required')) {
-        return 'Esse campo é obrigatório';
-      } else if (field.hasError('email')) {
-        return 'Email inválido';
-      }
-      
-    } else if (field === this.password) {
-      if (field.hasError('required')) {
-        return 'Esse campo é obrigatório';
-      }
-    }
 
-    return '';
+   if (field.hasError('required')) {
+     return 'Esse campo é obrigatório';
+   } else if (field.hasError('email')) {
+     return 'Email inválido';
+   }
+
+
+    return 'Erro 404';
   }
 
   login(form: NgForm) {

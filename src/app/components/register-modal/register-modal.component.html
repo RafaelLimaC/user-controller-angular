@@ -1,27 +1,31 @@
 <h2 mat-dialog-title class="title">Cadastrar</h2>
+<form #formRegister="ngForm" (ngSubmit)="register(formRegister)">
 <mat-dialog-content class="mat-typography">
   <h3>Bem-vindo ao UserController</h3>
   <mat-form-field class="field-email">
     <mat-label>Digite seu email</mat-label>
     <input matInput placeholder="email@exemplo.com" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>
   </mat-form-field>
   <mat-form-field class="field-password">
     <mat-label>Digite sua senha</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'">
+    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
+    <mat-error *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
   </mat-form-field>
   <mat-form-field class="field-password">
     <mat-label>Confirme sua senha</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'">
+    <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
+    <mat-error *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="center" class="dialog-actions">
   <button mat-flat-button color="primary">Cadastrar</button>
   <button mat-button mat-dialog-close>Cancelar</button>
 </mat-dialog-actions>
+</form>
