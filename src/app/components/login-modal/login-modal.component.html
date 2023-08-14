@@ -9,10 +9,11 @@
     </mat-form-field>
     <mat-form-field class="field-password">
       <mat-label>Digite sua senha</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'">
+      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
+      <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
     <div class="esqueceu-senha">Esqueceu sua senha?</div>
   </mat-dialog-content>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -19,6 +19,13 @@ export class RegisterModalComponent {
     }
 
     return this.email.hasError('email') ? 'Email inválido' : '';
+  }
+
+  register(form: NgForm) {
+    // if (form.valid) {
+    //   this.router.navigate(['./sucesso'])
+    // }
+    console.log(form.controls)
   }
 
 }

@@ -13,7 +13,9 @@ export class LoginModalComponent {
     private router: Router) {}
 
   email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
   hide = true;
+
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -24,10 +26,10 @@ export class LoginModalComponent {
   }
 
   login(form: NgForm) {
-    if (form.valid) {
-      this.router.navigate(['./sucesso'])
-    }
-    console.log(form)
+    // if (form.valid) {
+    //   this.router.navigate(['./sucesso'])
+    // }
+    console.log(form.controls)
   }
 
 }
