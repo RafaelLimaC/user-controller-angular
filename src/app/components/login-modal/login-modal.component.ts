@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-modal',
@@ -8,7 +9,8 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./login-modal.component.css'],
 })
 export class LoginModalComponent {
-  constructor(public dialogRef: MatDialogRef<LoginModalComponent>) {}
+  constructor(public dialogRef: MatDialogRef<LoginModalComponent>,
+    private router: Router) {}
 
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
@@ -19,6 +21,13 @@ export class LoginModalComponent {
     }
 
     return this.email.hasError('email') ? 'Email inválido' : '';
+  }
+
+  login(form: NgForm) {
+    if (form.valid) {
+      this.router.navigate(['./sucesso'])
+    }
+    console.log(form)
   }
 
 }

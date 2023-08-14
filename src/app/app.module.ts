@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './shared/footer/footer.component';
+import { SucessoLoginComponent } from './components/sucesso-login/sucesso-login.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     RegisterModalComponent,
     LoginModalComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SucessoLoginComponent
   ],
   imports: [
     BrowserModule,
