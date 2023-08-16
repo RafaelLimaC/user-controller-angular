@@ -1,36 +1,38 @@
-<form #formRegister="ngForm" (ngSubmit)="register(formRegister)">
+<form [formGroup]="formRegister">
   <h2 mat-dialog-title class="title">Cadastrar</h2>
 
   <mat-dialog-content class="mat-typography">
-    
+
     <h3>Bem-vindo ao UserController</h3>
-    
+
     <mat-form-field class="field-email">
       <mat-label>Digite seu email</mat-label>
-      <input matInput placeholder="email@exemplo.com" [formControl]="email" required>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>
+      <input matInput placeholder="email@exemplo.com" formControlName="email">
+      <mat-error *ngIf="this.formRegister.controls['email'].hasError('required')">Esse campo é obrigatório</mat-error>
+      <mat-error *ngIf="this.formRegister.controls['email'].hasError('email')">Email inválido</mat-error>
     </mat-form-field>
-    
+
     <mat-form-field class="field-password">
       <mat-label>Digite sua senha</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="password.invalid">{{getErrorMessage(password)}}</mat-error>
+      <mat-error *ngIf="this.formRegister.controls['password'].hasError('required')">Esse campo é obrigatório</mat-error>
+      <mat-error *ngIf="this.formRegister.controls['password'].hasError('minlength')">A senha deve conter no mínimo 8 caracteres.</mat-error>
     </mat-form-field>
-    
+
     <mat-form-field class="field-password">
       <mat-label>Confirme sua senha</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" [formControl]="confirmPassword" required>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="confirmPassword.invalid">{{getErrorMessage(confirmPassword)}}</mat-error>
+      <mat-error *ngIf="this.formRegister.controls['confirmPassword'].hasError('required')">Esse campo é obrigatório</mat-error>
     </mat-form-field>
-    
+
   </mat-dialog-content>
-  
+
   <mat-dialog-actions align="center" class="dialog-actions">
     <button mat-flat-button color="primary">Cadastrar</button>
     <button mat-button mat-dialog-close>Cancelar</button>
