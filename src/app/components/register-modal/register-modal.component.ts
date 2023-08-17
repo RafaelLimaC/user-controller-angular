@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ConfirmPasswordValidator } from './custom-validator';
 
 @Component({
   selector: 'app-register-modal',
@@ -20,9 +21,18 @@ export class RegisterModalComponent {
   ) {
     this.formRegister = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      confirmPassword: new FormControl('', [Validators.required])
-    })
+      password: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(100)
+    ])
+    ],
+    confirmPassword: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(100)
+    ])]
+    },{ validator: ConfirmPasswordValidator.MatchPassword})
   }
 
   register(form: NgForm) {
