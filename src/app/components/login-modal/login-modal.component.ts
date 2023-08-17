@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
@@ -9,12 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-modal.component.css'],
 })
 export class LoginModalComponent {
-  
-  constructor(public dialogRef: MatDialogRef<LoginModalComponent>, private router: Router) {}
-  
-  email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
+
+  formLogin: FormGroup;
   hide = true;
+  
+  constructor(
+    public dialogRef: MatDialogRef<LoginModalComponent>, 
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {
+    this.formLogin = this.formBuilder.group({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required])
+    })
+  }
+  
 
   getErrorMessage(field: FormControl) {
 
@@ -28,11 +37,13 @@ export class LoginModalComponent {
     return 'Erro 404';
   }
 
-  login(form: NgForm) {
-    // if (form.valid) {
-    //   this.router.navigate(['./sucesso'])
-    // }
-    console.log(form.controls)
+  login() {
+    if (this.formLogin.valid) {
+      this.dialogRef.close();
+      this.router.navigate(['./sucesso'])
+    }
+    
+    console.log(this.formLogin.controls)
   }
 
 }
