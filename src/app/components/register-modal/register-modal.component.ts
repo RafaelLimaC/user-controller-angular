@@ -35,11 +35,13 @@ export class RegisterModalComponent {
     },{ validator: ConfirmPasswordValidator.MatchPassword})
   }
 
-  register(form: NgForm) {
-    // if (form.valid) {
-    //   this.router.navigate(['./sucesso'])
-    // }
-    console.log(form.controls)
+  register() {
+    if (this.formRegister.valid) {
+      this.dialogRef.close();
+      this.router.navigate(['./sucesso'])
+    }
+
+    console.log(this.formRegister.controls)
   }
 
 }
